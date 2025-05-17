@@ -48,7 +48,7 @@ jobs:
           path: bpftools-min-${{ matrix.env['ARCH'] }}.tar.gz
 
   build_bpftrace_static:
-    name: Build static bpftrace binaries
+    name: binaries static bpftrace 
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -70,7 +70,7 @@ jobs:
           path: out/android/${{ matrix.env['ARCH'] }}/bin/bpftrace
   
   build_bpftrace_static-bin:
-    name: Build static bpftrace binaries-bin
+    name: all static bpftrace binaries
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -88,5 +88,5 @@ jobs:
         run: make bpftrace NDK_PATH=`pwd`/android-ndk-r27b NDK_ARCH=${{ matrix.env['ARCH'] }} STATIC_LINKING=true 
       - uses: actions/upload-artifact@v4
         with:
-          name: bpftrace-android-${{ matrix.env['ARCH'] }}
+          name: all-bpftrace-android-${{ matrix.env['ARCH'] }}
           path: out/android/${{ matrix.env['ARCH'] }}/bin
